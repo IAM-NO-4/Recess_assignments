@@ -27,32 +27,36 @@ while True:
 
     print("\n")
     option = input("Select your option : ")
-
-    num1 = float(input("Enter the first number : "))
-    num2 = float(input("Enter the second number : "))
+    if option not in ["1", "2", "3", "4", "5"]:
+        print("Invalid option, try again")
+        continue
+    num1 = input("Enter the first number : ")
+    num2 = input("Enter the second number : ")
+    if num1.isalpha() or num2.isalpha():
+        print("Invalid input, try again (numbers only)")
+        continue
     print("\n")
+   
     match option:
         case "1":
-            result = add(num1, num2)
-            print(f"The result of {num1} + {num2} is : {result}")
+            result = add(float(num1), float(num2))
+            print(f"The result of {num1} + {num2} is : {result:.2f}")
         case "2":
-            result = sub(num1, num2)
-            print(f"The result of {num1} - {num2} is : {result}")
+            result = sub(float(num1), float(num2))
+            print(f"The result of {num1} - {num2} is : {result:.2f}")
         case "3":
-            result = mul(num1, num2)
-            print(f"The result of {num1} * {num2} is : {result}")
+            result = mul(float(num1), float(num2))
+            print(f"The result of {num1} * {num2} is : {result:.2f}")
         case "4":
-            if num2 == 0:
+            if float(num2) == 0:
                 print("Cannot divide by zero, try again")
                 continue
-            result = div(num1, num2)
-            print(f"The result of {num1} / {num2} is : {result}")
+            result = div(float(num1), float(num2))
+
+            print(f"The result of {num1} / {num2} is : {result:.2f}")
         case "5":
             print("See you again soon!")
             break
-        case _:
-            print("Wrong selection option, try again. valid options: 1,2,3,4 or 5")
-            continue
     print("\n")
     print("press c to continue or any key to quit")
     selection = input()
