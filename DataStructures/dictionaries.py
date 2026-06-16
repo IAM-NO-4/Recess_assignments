@@ -15,7 +15,7 @@ print(keys)
 values = shoes.values()
 print(values)
 
-if "size" in shoes.keys()
+if "size" in shoes.keys():
     print("the key exists")
 else:
     print("The key is missing")
