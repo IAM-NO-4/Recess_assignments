@@ -1,0 +1,10 @@
+2026-06-28 21:10:34,724 - ERROR - cannot access local variable 'address' where it is not associated with a value
+2026-06-28 21:11:09,522 - ERROR - cannot access local variable 'address' where it is not associated with a value
+2026-06-28 21:11:19,146 - INFO - Searched student 2400700410
+2026-06-28 21:11:34,312 - INFO - Viewed all students
+2026-06-28 21:12:19,620 - ERROR - cannot access local variable 'address' where it is not associated with a value
+2026-06-28 21:12:54,956 - ERROR - cannot access local variable 'address' where it is not associated with a value
+2026-06-28 21:13:23,802 - ERROR - '2400700410'
+2026-06-28 21:13:26,395 - INFO - Viewed all students
+2026-06-28 21:18:01,119 - INFO - Added student 2400700417
+2026-06-28 21:23:46,041 - INFO - Added student 2343700412
