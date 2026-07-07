@@ -2,6 +2,14 @@ import csv
 import json
 import logging
 import os
+import numpy as np
+import pandas as pd
+import seaborn as sns
+
+
+print(np.__version__)
+print(pd.__version__)
+print(sns.__version__)
 
 # Logging Configuration
 FOLDER = "file_handling"
