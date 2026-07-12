@@ -83,3 +83,6 @@ class SnakeDisplay:
     
 if __name__ == "__main__":
     SnakeDisplay()
+
+
+   # 1: micro web frame work written in python, 2: cos it allows u do add functionality based on wat u want, 3: client requwsts, serve responds, 4: msg from client asking for somting, 5: reply from the server, 6: a url pattern 
