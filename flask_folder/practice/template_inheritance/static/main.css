@@ -1,0 +1,21 @@
+body{
+    background-color: rgb(238, 235, 231);
+    margin-left: 10px;
+    align-content: center;
+}
+.sucess{
+    color: rgb(58, 238, 58);
+    padding: 5px;
+    background-color: black;
+}
+
+.error{
+    color: rgb(216, 27, 27);
+    margin-left: 5px;
+    background-color: black;
+}
+.warning{
+    color: rgb(240, 240, 28);
+    margin-left: 5px;
+    background-color: black;
+}
