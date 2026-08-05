@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit {{student.fname}}'s information</title>
+</head>
+<body>
+   <form action="" method="post">
+    {% csrf_token %}
+    <label for="fname">First name:</label> <br>
+    <input type="text" name="fname" value="{{ student.fname }}"> <br>
+    <label for="lname">Last name:</label><br>
+    <input type="text" name="lname" value="{{ student.lname }}"> <br>
+    <label for="st_class">Class:</label><br>
+    <input type="text" name="st_class" value="{{ student.student_class }}"> <br>
+    <label for="st_number">Student No:</label> <br>
+    <input type="text" name="st_number" value="{{ student.student_number }}"> <br>
+    <label for="age">Age:</label> <br>
+    <input type="number" name="age" value="{{ student.age }}"> <br>
+    <button type="submit">Update</button>
+   </form> 
+</body>
+</html>

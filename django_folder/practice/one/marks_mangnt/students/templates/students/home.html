@@ -9,11 +9,15 @@
     <h1>Welcome the student marks mngmt system</h1>
     <p> This system allows you to manage student marks efficiently.</p>
     Select your option below to get started:
+
+
+    
     <ul>
-        <li><a href="#">Add Student</a></li>
-        <li><a href="#">View Students</a></li>
-        <li><a href="#">Update Student</a></li>
-        <li><a href="#">Delete Student</a></li>
+        <li><a href="{% url 'add_student' %}">Add Student</a></li>
+        <li><a href="{% url 'add_marks' %}">Add student marks</a></li>
+        <li><a href="{% url 'view_students' %}">View all student</a></li>
     </ul>
+
+ 
 </body>
 </html>

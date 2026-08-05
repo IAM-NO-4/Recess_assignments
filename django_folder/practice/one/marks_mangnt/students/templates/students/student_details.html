@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ student.name }} details</title>
+</head>
+<body>
+    <h3>marks information of {{ student.fname }} {{ student.lname }}</h3>
+    {% for mark in student.marks.all %}
+        <p>{{ mark.subject.name }} : {{ mark.score }}</p>
+        {% empty %}
+        <p>No marks found for {{ student.fname }}</p>
+    {% endfor %}
+</body>
+</html>

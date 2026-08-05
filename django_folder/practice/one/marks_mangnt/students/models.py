@@ -6,7 +6,20 @@ class Student(db.Model):
     student_class = db.CharField(max_length=10)
     age = db.IntegerField(max_length=3)
     student_number = db.IntegerField(unique=True)
-    marks = db.FloatField(max_length=5)
 
     def __str__(self):
         return f"{self.fname} {self.lname} (Student No: {self.student_number})"
+
+class Subject(db.Model):
+    name = db.CharField(max_length=20)
+    def __str__(self):
+        return f"{self.name}"
+
+class Marks(db.Model):
+    student = db.ForeignKey(Student, on_delete= db.CASCADE, related_name= "marks")
+    subject = db.ForeignKey(Subject, on_delete=db.CASCADE,related_name= "marks")
+    score = db.FloatField(max_length= 10)
+
+    def __str__(self):
+        return f"{self.student} - {self.subject}- {self.score}"
+     
