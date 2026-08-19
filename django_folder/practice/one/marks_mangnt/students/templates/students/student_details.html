@@ -1,16 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ student.name }} details</title>
-</head>
-<body>
-    <h3>marks information of {{ student.fname }} {{ student.lname }}</h3>
+
+    {% extends "students/base.html" %}
+
+    {% block title %}
+    Student details
+    {% endblock title %}
+
+    {% block content %}
+    <h3>marks information for {{ student.fname }} {{ student.lname }}</h3>
     {% for mark in student.marks.all %}
-        <p>{{ mark.subject.name }} : {{ mark.score }}</p>
+        <p>{{ mark.subject.name }} : {{ mark.score }} 
+            Grade: {% if mark.score >= 80 %} A
+            {% elif mark.score >= 75 %} B
+            {% elif mark.score >= 65 %} C
+            {% elif mark.score >= 60 %} D
+            {% elif mark.score >= 50 %} E
+            {% elif mark.score < 50 %} B
+            {% endif %}
+
+            <a href="{% url 'edit_marks' mark.id %}">Edit marks</a>
+        </p>
+    
         {% empty %}
         <p>No marks found for {{ student.fname }}</p>
     {% endfor %}
-</body>
-</html>
+
+    {% if student.marks %}
+    <div>
+        <h4>Marks summary</h4>
+        <hr>
+        Total Marks: {{results.total}} <br>
+        Average: {{results.average|floatformat:2}} <br>
+        Highest mark: {{results.highest}} <br>
+        Lowest mark: {{results.smallest}} <br>
+        Subjects: {{results.subjects}} <br>
+        STATUS: {% if results.subjects == 4 and results.total >= 200  %} PASS
+        {% elif results.subjects < 4  %} Missing marks for some subjects
+        {% else %} FAIL
+        {% endif %}
+
+        
+    </div>
+    <hr>
+    {% endif %}
+    <a href="{% url 'home' %}">Back to home</a>
+    
+{% endblock %}

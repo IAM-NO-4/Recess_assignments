@@ -1,0 +1,26 @@
+{% extends "students/base.html" %}
+{% block title %}Class Information{% endblock %}
+
+
+{% block content %}
+<h3>{{ class }} summary</h3>
+{% for student in students %}
+    <p> <b>{{ student.fname }} {{ student.lname }}</b> </p> 
+    Total Marks: {{ student.total }} <br>
+    Number of Subjects: {{ student.subjects }} <br>
+     Average: {{ student.average|floatformat:2 }}
+
+{% endfor %}  <br>
+<hr>
+<div>
+                    {% if page_obj.has_previous %}
+                    <a href="?page= 
+                    {{ page_obj.previous_page_number }}">previous</a>
+                    {% endif %}
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    {% if page_obj.has_next %}
+                    <a href="?page= 
+                    {{ page_obj.next_page_number }}">next</a>
+                    {% endif %}
+                </div> 
+{% endblock content %}

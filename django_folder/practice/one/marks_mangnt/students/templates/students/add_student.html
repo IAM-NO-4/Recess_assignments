@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add student</title>
-</head>
-<body>
+
+    {% extends "students/base.html" %}
+
+    {% block title %}
+    Add student
+    {% endblock title %}
+
+    {% block content %}
         <h2>Add student</h2>
     <form action="" method="post">
         {% csrf_token %}
-        <label for="fname">First name</label> <br>
-        <input type="text" name="fname"> <br>
-        <label for="lname">Last name</label> <br>
-        <input type="text" name="lname"> <br>
-        <label for="st_class">Class</label> <br>
-        <input type="text" name="st_class"> <br>
-        <label for="age">Age</label> <br>
-        <input type="number" name="age"> <br>
-        <label for="st_number">Student number</label> <br>
-        <input type="number" name="st_number"> <br>
+        {{ form.as_p }}
+
         <button type="submit">Add student</button>
         
     </form>
-</body>
-</html>
+    <a href="{% url 'home' %}">Back to home</a>
+{% endblock content %}

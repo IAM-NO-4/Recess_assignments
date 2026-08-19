@@ -1,37 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>view</title>
-</head>
-<body>
-    <h2>Available Students</h2>
-    <table border="3">
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Class</th>
-                <th>Actions</th> 
-                
-            </tr>
-        </thead>
-        {% for student in students %}
-                 <tr>
-                <td>{{ student.fname }}</td>
-                <td>{{ student.lname }}</td>
-                <td>{{ student.student_class }}</td>
-                <td>
-                    <a href="{% url 'student_details' student.id %}">view marks</a>
-                    <a href="{% url 'edit_student' student.id %}">Edit</a>
-                    <a href="{% url 'delete_student' student.id %}">Delete</a>
-                </td>
-            </tr>
 
-           
+    {% extends "students/base.html" %}
+
+    {% block title %}
+    View
+    {% endblock title %}
+
+    {% block content %}
+    <h2>Available Students</h2>
+    <form action="" method="get">
+        <input type="text" name="search" placeholder="enter name to search"
+        value="{{ request.GET.search }}">
+        <select name="class" id="">
+            <option value="">All classes</option>
+            {% for class in classes %}
+            <option value="{{ class }}"
+            {% if  request.GET.class == class  %} selected {% endif %}>{{ class }}</option>
             {% endfor %}
-    </table>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+    
+    <a href="{% url 'add_student' %}">Add new student</a>
+    {% if not students %}
+    <p>There is no student whose name contains {{ request.GET.search }}
+        and is in {{ request.GET.class }}
+    </p>
+    {% else %}
+     <table border="3">
+            <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Class</th>
+                    <th>Actions</th> 
+                    
+                </tr>
+            </thead>
+            {% for student in students %}
+                    <tr>
+                    <td>{{ student.fname }}</td>
+                    <td>{{ student.lname }}</td>
+                    <td>{{ student.student_class }}</td>
+                    <td>
+                        <a href="{% url 'student_details' student.id %}">view marks</a>
+                        <a href="{% url 'edit_student' student.id %}">Edit</a>
+                        <a href="{% url 'delete_student' student.id %}">Delete</a>
+                    </td>
+                </tr>
+
+            
+                {% endfor %}
+             
+        </table>
+
+    {% endif %}
+        <div>
+                    {% if page_obj.has_previous %}
+                    <a href="?page= 
+                    {{ page_obj.previous_page_number }}&search={{ request.GET.search }}&class={{ request.GET.class }}">previous</a>
+                    {% endif %}
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                    {% if page_obj.has_next %}
+                    <a href="?page= 
+                    {{ page_obj.next_page_number }}&search={{ request.GET.search }}&class={{ request.GET.class }}">next</a>
+                    {% endif %}
+                </div>  
     <a href="{% url 'home' %}">Back to home</a>
-</body>
-</html>
+{% endblock content %}

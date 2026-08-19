@@ -1,0 +1,16 @@
+
+    {% extends "students/base.html" %}
+
+    {% block title %}
+    Delete {{student.fname }}
+    {% endblock title %}
+
+    {% block content %}
+    <p>Are you sure you want to delete:</p>
+    <p>{{ student.fname }} {{ student.lname }} ?</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit">Yes</button>
+    </form>
+    <a href="{% url 'view_students' %}">Cancel</a>
+{% endblock %}

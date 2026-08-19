@@ -1,0 +1,11 @@
+{% extends "students/base.html" %}
+{% block title %}Summary Information{% endblock %}
+{% block content %}
+<h3>Summary Information</h3>
+Select a class to view the summary:
+<ul>
+    {% for cls in classes %}
+        <li><a href="{% url 'class_info' cls %}">{{ cls }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock content %}

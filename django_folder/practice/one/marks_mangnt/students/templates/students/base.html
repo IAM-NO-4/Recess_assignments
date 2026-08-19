@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        Marks management system
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'students/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Marks management system</h1>
+        <nav>
+             <a href="{% url 'add_student' %}">Add Student</a>
+             <a href="{% url 'add_marks' %}">Add student marks</a>
+             <a href="{% url 'view_students' %}">View all student</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+        </nav>
+    </header>
+    <hr> 
+    <main>
+        {% if messages %}
+        {% for message in messages %}
+        <p class="{{message.tags}}">{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% block content %}
+        {% endblock content %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,17 @@
+
+    {% extends "students/base.html" %}
+
+    {% block title %}
+    Edit {{ mark.student.fname }}'s marks
+    {% endblock title %}
+
+    {% block content %}
+   <h2>Edit {{ mark.student.fname }}'s marks</h2> 
+   <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Update</button>
+   </form>
+   <a href="{% url 'home' %}">Back to home</a>
+   <a href="{% url 'delete_marks' mark.id %}">Delete</a>
+{% endblock%}

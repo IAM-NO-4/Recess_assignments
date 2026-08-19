@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOME</title>
-</head>
-<body>
+
+    {% extends "students/base.html" %}
+
+    {% block title %}
+    Welcome
+    {% endblock title %}
+
+     {% block content %}
     <h1>Welcome the student marks mngmt system</h1>
     <p> This system allows you to manage student marks efficiently.</p>
     Select your option below to get started:
@@ -16,8 +16,11 @@
         <li><a href="{% url 'add_student' %}">Add Student</a></li>
         <li><a href="{% url 'add_marks' %}">Add student marks</a></li>
         <li><a href="{% url 'view_students' %}">View all student</a></li>
+        <li><a href="{% url 'summary' %}">View class summary</a></li>
     </ul>
+    {% endblock content %}
+
+
+   
 
  
-</body>
-</html>
