@@ -42,9 +42,15 @@
                     <td>{{ student.lname }}</td>
                     <td>{{ student.student_class }}</td>
                     <td>
+                        {% if perms.students.view_marks %}
                         <a href="{% url 'student_details' student.id %}">view marks</a>
+                        {% endif %}
+                        {% if perms.students.change_student %}
                         <a href="{% url 'edit_student' student.id %}">Edit</a>
+                        {% endif %}
+                        {% if perms.students.delete_student %}
                         <a href="{% url 'delete_student' student.id %}">Delete</a>
+                        {% endif %}
                     </td>
                 </tr>
 

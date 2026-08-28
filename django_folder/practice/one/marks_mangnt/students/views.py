@@ -7,9 +7,11 @@ from django.http import HttpResponse
 from .forms import MarkForm, StudentForm
 from django .core.paginator import Paginator
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth import login, logout, authenticate
 
+@login_required
+@permission_required('students.view_student', raise_exception=True)
 def student_info(request,id):
     student = get_object_or_404(Student, id=id)
     marks = student.marks.all()
@@ -27,6 +29,7 @@ def student_info(request,id):
     return render(request, "students/student_details.html",context)
 
 @login_required
+@permission_required('students.change_marks', raise_exception=True)
 def edit_marks(request,id):
     mark = get_object_or_404(Marks, id=id)
     if request.method == "POST":
@@ -47,6 +50,7 @@ def edit_marks(request,id):
         return render(request, "students/edit_marks.html", context)
 
 @login_required
+@permission_required('students.add_marks', raise_exception=True)
 def add_marks(request):
     if request.method == "POST":
         form = MarkForm(request.POST)
@@ -88,6 +92,7 @@ def view_students(request):
     return render(request,"students/view_students.html", context)
 
 @login_required
+@permission_required('students.add_student', raise_exception=True)
 def add_student(request):
     if request.method == "POST":
         form = StudentForm(request.POST)
@@ -105,6 +110,7 @@ def add_student(request):
     return render(request,"students/add_student.html", context)
         
 @login_required
+@permission_required('students.delete_marks', raise_exception=True)
 def delete_marks(request,id):
     mark = get_object_or_404(Marks , id=id)
     if request.method == "POST":
@@ -118,6 +124,7 @@ def delete_marks(request,id):
     return render(request, "students/delete_marks.html", context)
 
 @login_required
+@permission_required('students.change_student', raise_exception=True)
 def edit_student(request, id):
     student = Student.objects.get(id=id)
     if request.method == "POST":
@@ -135,6 +142,7 @@ def edit_student(request, id):
     return render(request,"students/edit_student.html",context)
 
 @login_required
+@permission_required('students.delete_student', raise_exception=True)
 def delete_student(request, id):
     student = Student.objects.get(id=id)
     if request.method == "POST":
